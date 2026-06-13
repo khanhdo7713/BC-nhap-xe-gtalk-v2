@@ -648,7 +648,7 @@
     // =====================================================================
     async function lookupMSNV() {
       const msnv = document.getElementById("input-msnv").value.trim();
-      if (!/^\\d{7}$/.test(msnv)) {
+      if (!/^\d{7}$/.test(msnv)) {
         showToast("❌ MSNV phải là 7 chữ số!", "error");
         return;
       }
@@ -747,7 +747,7 @@
     // VALIDATE VÀ FORMAT NGÀY
     // =====================================================================
     function isValidDate(input) {
-      const match = input.match(/^(\\d{1,2})([\\/\\-.])\\s*(\\d{1,2})\\2\\s*(\\d{2}|\\d{4})$/);
+      const match = input.match(/^(\d{1,2})([\/\-.])\s*(\d{1,2})\2\\s*(\d{2}|\d{4})$/);
       if (!match) return false;
       let day = parseInt(match[1], 10), month = parseInt(match[3], 10), year = parseInt(match[4], 10);
       if (year < 100) year += 2000;
@@ -755,7 +755,7 @@
       return (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day);
     }
     function formatDate(input) {
-      const match = input.match(/^(\\d{1,2})([\\/\\-.])\\s*(\\d{1,2})\\2\\s*(\\d{2}|\\d{4})$/);
+      const match = input.match(/^(\d{1,2})([\/\-.])\s*(\d{1,2})\2\s*(\d{2}|\d{4})$/);
       if (!match) return input;
       let d = match[1].padStart(2, "0"), m = match[3].padStart(2, "0"), y = match[4];
       if (y.length === 2) y = "20" + y;
@@ -817,7 +817,7 @@
       const treo = document.querySelector('input[name="treo"]:checked').value;
 
       // === VALIDATE ===
-      if (!/^\\d{7}$/.test(msnv)) { showToast("❌ MSNV phải là 7 chữ số!", "error"); return; }
+      if (!/^\d{7}$/.test(msnv)) { showToast("❌ MSNV phải là 7 chữ số!", "error"); return; }
       if (!isValidDate(dateInput)) { showToast("❌ Ngày không hợp lệ! (dd/mm/yyyy)", "error"); return; }
       if (mcd.length < 15) { showToast("❌ MCĐ phải ≥ 15 ký tự!", "error"); return; }
       if (!lookupData.ten_nv) { showToast("⚠️ Hãy bấm Tra cứu MSNV trước!", "error"); return; }
