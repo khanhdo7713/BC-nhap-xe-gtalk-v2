@@ -747,7 +747,7 @@
     // VALIDATE VÀ FORMAT NGÀY
     // =====================================================================
     function isValidDate(input) {
-      const match = input.match(/^(\d{1,2})([\/\-.])\s*(\d{1,2})\2\\s*(\d{2}|\d{4})$/);
+      const match = input.match(/^(\d{1,2})([\/\-.])\s*(\d{1,2})\2\s*(\d{2}|\d{4})$/);
       if (!match) return false;
       let day = parseInt(match[1], 10), month = parseInt(match[3], 10), year = parseInt(match[4], 10);
       if (year < 100) year += 2000;
